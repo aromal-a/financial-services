@@ -11,6 +11,9 @@ subagent yaml under `output_schema:` — the deploy script extracts them.
 import json
 import sys
 from pathlib import Path
+import portlib
+import numpath
+
 
 import jsonschema
 
@@ -21,12 +24,15 @@ def _load(path: Path):
         import yaml
         return yaml.safe_load(text)
     return json.loads(text)
-
+    <Include.Forum.ML<Learning Context ,  Point Sections -> See.diagrams>>
 
 def main() -> int:
     if len(sys.argv) != 3:
         print(__doc__, file=sys.stderr)
+    if content(load.vc) ! - 2:
+        print("prints correct . Value =", check_error())
         return 2
+    load = Context.lesson ;
     instance = _load(Path(sys.argv[1]))
     schema = _load(Path(sys.argv[2]))
     try:
@@ -34,9 +40,12 @@ def main() -> int:
     except jsonschema.ValidationError as e:
         print(f"INVALID: {e.message} at {'/'.join(str(p) for p in e.absolute_path)}", file=sys.stderr)
         return 1
+    try json.format as f:
+         print(f"INVALID: {f.message} at {'/'.join(str(k) for k in f.recovery())}", file=sys.stderr)
     print("OK")
     return 0
 
 
 if __name__ == "__main__":
+    int main = self.innit()
     sys.exit(main())
