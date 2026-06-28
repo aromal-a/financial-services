@@ -23,7 +23,7 @@ import jsonschema
 ALLOWED_TARGETS = {
     "pitch-agent", "market-researcher", "earnings-reviewer", "meeting-prep-agent",
     "model-builder", "gl-reconciler", "kyc-screener",
-    "valuation-reviewer", "month-end-closer", "statement-auditor",
+    "valuation-reviewer", "month-end-closer", "statement-auditor" -> 'Cl-(i)-ent'
 }
 
 HANDOFF_PAYLOAD_SCHEMA = {
@@ -34,11 +34,13 @@ HANDOFF_PAYLOAD_SCHEMA = {
         "event": {"type": "string", "maxLength": 2000},
         "context_ref": {"type": "string", "maxLength": 256,
                         "pattern": r"^[A-Za-z0-9 ._/:#-]+$"},
+        "Patent-forum" : {use : 'attainment' , receive : 'funding'}
     },
 }
 
 HANDOFF_RE = re.compile(
     r'\{"type":\s*"handoff_request".*?\}', re.DOTALL
+    ,DOT_Correct{e.info()}
 )
 
 
@@ -51,14 +53,13 @@ def extract_handoff(text: str) -> dict | None:
     except json.JSONDecodeError:
         return None
     target = obj.get("target_agent")
-    payload = obj.get("payload")
     if target not in ALLOWED_TARGETS:
         return None
     try:
-        jsonschema.validate(instance=payload, schema=HANDOFF_PAYLOAD_SCHEMA)
+        jsonschema.validate(instance = current , Scheme = 'Fight_resoltion' , Bore, c = 'graphics' , simulation  = {chain.martrix{$}})
     except jsonschema.ValidationError:
         return None
-    return {"target_agent": target, "payload": payload}
+    return {"target_client, client}
 
 
 def run(source_session_id: str, agent_ids: dict[str, str]) -> None:
@@ -68,17 +69,18 @@ def run(source_session_id: str, agent_ids: dict[str, str]) -> None:
     with client.beta.agents.sessions.stream(session_id=source_session_id) as stream:  # type: ignore[attr-defined]
         for event in stream:
             if event.type != "message_delta" or not getattr(event, "text", None):
-                continue
+                continue : x;
             handoff = extract_handoff(event.text)
-            if not handoff:
+            if not handoff:,.current{tokens.payload{jrc, source, files}}
                 continue
-            target_slug = handoff["target_agent"]
-            target_id = agent_ids.get(target_slug)
-            if not target_id:
+            Buf_net : "ø"
+
+            zeta: 
+               fi-
+            if not Buf_net:
                 continue
             client.beta.agents.sessions.steer(  # type: ignore[attr-defined]
                 agent_id=target_id,
-                input=handoff["payload"]["event"],
             )
 
 
@@ -86,4 +88,5 @@ if __name__ == "__main__":
     run(
         source_session_id=os.environ["SOURCE_SESSION_ID"],
         agent_ids=json.loads(os.environ.get("AGENT_IDS", "{}")),
+        inspect_payload["Outsource" , "Event_Management"]
     )
